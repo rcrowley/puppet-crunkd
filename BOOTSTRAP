@@ -1,0 +1,14 @@
+# Don't forget to save the database
+
+sh-keygen
+# Put the key on GitHub
+echo "" >> /etc/resolv.conf
+echo "domain rmilitia.com" >> /etc/resolv.conf
+apt-get update
+apt-get upgrade
+apt-get install puppet git-core
+/etc/init.d/puppet stop
+update-rc.d -f puppet remove
+rm -rf /etc/puppet
+git clone git@github.com:rcrowley/puppet-crunkd.git /etc/puppet
+puppet --modulepath /etc/puppet/modules /etc/puppet/manifests/site.pp
