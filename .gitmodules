@@ -1,0 +1,6 @@
+[submodule "modules/sourceinstall"]
+	path = modules/sourceinstall
+	url = git://github.com/rcrowley/puppet-sourceinstall.git
+[submodule "modules/python"]
+	path = modules/python
+	url = git://github.com/rcrowley/puppet-python.git
