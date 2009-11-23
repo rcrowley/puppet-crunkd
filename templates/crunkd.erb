@@ -1,0 +1,18 @@
+ServerName crunkd.getcrunkd.com
+
+<VirtualHost *:88>
+
+    ServerName getcrunkd.com
+	ServerAlias www.getcrunkd.com
+	DocumentRoot /root/crunkd/crunkd
+
+	WSGIScriptAlias / /root/crunkd/crunkd/crunkd.wsgi
+
+	Alias /robots.txt /root/crunkd/crunkd/static/robots.txt
+	Alias /favicon.ico /root/crunkd/crunkd/static/favicon.ico
+	Alias /static/ /root/crunkd/crunkd/static/
+
+	WSGIDaemonProcess crunkd processes=2 threads=8
+	WSGIProcessGroup crunkd
+
+</VirtualHost>
