@@ -8,5 +8,6 @@ class lighty {
 		ensure => present,
 		content => template("lighttpd.conf.erb"),
 	}
+	# TODO Put something in document root?
 
 }
