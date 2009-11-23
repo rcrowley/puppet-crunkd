@@ -25,5 +25,23 @@ class apache {
 		ensure => present,
 		content => template("crunkd.erb"),
 	}
+	file { "/etc/apache2/sites-enabled/crunkd":
+		require => File["/etc/apache2/sites-available/crunkd"],
+		ensure => "../sites-available/crunkd",
+	}
+
+	service { "apache2":
+		subscribe => [
+			Package["apache2"],
+			Package["libapache2-mod-wsgi"],
+			File["/etc/apache2/ports.conf"],
+			File["/etc/apache2/mods-enabled/wsgi.conf"],
+			File["/etc/apache2/mods-enabled/wsgi.load"],
+			File["/etc/apache2/sites-available/crunkd"],
+			File["/etc/apache2/sites-enabled/crunkd"]
+		],
+		ensure => running,
+		enable => true,
+	}
 
 }
